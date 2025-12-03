@@ -1,35 +1,66 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
+import HomeIcon from '../../assets/icons/homeIcon.svg';
+import LibraryIcon from '../../assets/icons/libraryIcon.svg';
+import SearchIcon from '../../assets/icons/searchIcon.svg';
+import { fontSize } from '../constants/tokens';
 
-import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+export default function TabsLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-      }}>
+        headerShown: false, 
+        tabBarActiveTintColor: '#FFFFFF',
+        tabBarInactiveTintColor: '#ebe4e4ff',
+        tabBarStyle: {
+          backgroundColor: '#1A0A3A',
+             height: 80,  
+              paddingBottom: 10,
+              paddingTop: 10,  
+        },
+        tabBarLabelStyle: {
+          fontSize: fontSize.sm,
+          fontWeight: '600',
+        }
+        
+        ,
+      }}
+    >
       <Tabs.Screen
-        name="index"
+        name="home" 
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarIcon: ({ color, focused }) => (
+          <HomeIcon width={16} height={16} fill={focused ? color : 'none'} 
+          stroke={focused ? 'none' : color}
+          strokeWidth={1.5}
+          />),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="search" 
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: 'Search',
+          tabBarIcon: ({ color, focused }) => (
+          <SearchIcon width={16} height={16} 
+          fill={focused ? color : 'none'} 
+          stroke={focused ? 'none' : color}
+          strokeWidth={1.5}/>),
+          
+        }}
+      />
+      <Tabs.Screen
+        name="yourLibrary" 
+        options={{
+          title: 'Library',
+          tabBarIcon: ({ color, focused }) => (
+          <LibraryIcon
+          width={16} height={16} fill={focused ? color : 'none'} 
+          stroke={focused ? 'none' : color}
+          strokeWidth={1.5} />),
         }}
       />
     </Tabs>
   );
 }
+

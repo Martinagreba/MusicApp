@@ -9,6 +9,7 @@ export default function BackgroundGradient({ children }: Props) {
   return (
     <View style={styles.wrapper}>
       <LinearGradient
+        pointerEvents="none"
         colors={["#121212", "#1A0A3A"]}
         style={StyleSheet.absoluteFill}
         start={{ x: 0, y: 0 }}

@@ -1,14 +1,14 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
 
-const yourLibrary = () => {
+const YourLibrary = () => {
   return (
     <View>
       <Text>yourLibrary</Text>
     </View>
-  )
-}
+  );
+};
 
-export default yourLibrary
+export default YourLibrary;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});

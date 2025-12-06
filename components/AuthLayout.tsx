@@ -1,34 +1,69 @@
-import React from 'react';
-import { ScrollView, StatusBar, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import BackgroundGradient from './BackgroundGradient';
+import {
+  Keyboard,
+  KeyboardAvoidingView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import BackgroundGradient from "./BackgroundGradient";
 
 interface AuthLayoutProps {
   children: React.ReactNode;
+  scrollable?: boolean;
 }
 
-const AuthLayout = ({children}: AuthLayoutProps) => {
+const AuthLayout = ({ children, scrollable }: AuthLayoutProps) => {
   return (
     <BackgroundGradient>
-       <StatusBar barStyle="light-content" />
+      <StatusBar barStyle="light-content" />
       <SafeAreaView style={styles.safeArea}>
-        <ScrollView contentContainerStyle={styles.scrollContainer} keyboardShouldPersistTaps="handled">
-          {children}
-        </ScrollView>
+        <KeyboardAvoidingView
+          style={styles.keyboardAvoiding}
+          behavior="padding"
+          keyboardVerticalOffset={0}
+        >
+          {scrollable ? (
+            <ScrollView
+              contentContainerStyle={styles.container}
+              keyboardShouldPersistTaps="handled"
+              showsVerticalScrollIndicator={false}
+              persistentScrollbar={false}
+            >
+              {children}
+            </ScrollView>
+          ) : (
+            <TouchableWithoutFeedback
+              onPress={Keyboard.dismiss}
+              accessible={false}
+            >
+              <View style={styles.centerContainer}>{children}</View>
+            </TouchableWithoutFeedback>
+          )}
+        </KeyboardAvoidingView>
       </SafeAreaView>
     </BackgroundGradient>
-  )
-}
+  );
+};
 
-export default AuthLayout
+export default AuthLayout;
 
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
     paddingHorizontal: 24,
   },
-  scrollContainer: {
-    flexGrow: 1,
-    justifyContent: 'center',
+  keyboardAvoiding: {
+    flex: 1,
   },
-})
+  container: {
+    flexGrow: 1,
+    justifyContent: "center",
+  },
+  centerContainer: {
+    flex: 1,
+    justifyContent: "center",
+  },
+});

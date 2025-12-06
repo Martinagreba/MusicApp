@@ -3,9 +3,7 @@ export const fontSize = {
   sm: 14,
   base: 16,
   lg: 20,
-  xl: 35
-}
+  xl: 35,
+};
 
-export const screenPadding = {
-  horizontal: 24
-}
+export const screenPadding = 24;

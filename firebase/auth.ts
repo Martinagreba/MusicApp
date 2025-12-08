@@ -1,9 +1,5 @@
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  updateProfile,
-} from "firebase/auth";
-import { auth } from "./firebaseConfig";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth } from './firebaseConfig';
 
 export const firebaseSignUp = async (
   email: string,
@@ -16,11 +12,14 @@ export const firebaseSignUp = async (
     displayName: userName,
   });
 
-  return result.user; // повертаємо юзера
+  return result.user;
 };
 
-export const firebaseSignIn = async (email: string, password: string) => {
+export const firebaseSignIn = async (
+  email: string,
+  password: string,
+) => { 
   const result = await signInWithEmailAndPassword(auth, email, password);
 
-  return result.user; // повертаємо юзера
+  return result.user; 
 };

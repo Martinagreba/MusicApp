@@ -3,5 +3,7 @@
     "source.fixAll": "explicit",
     "source.organizeImports": "explicit",
     "source.sortMembers": "explicit"
-  }
+  },
+  "java.project.excludedPaths": ["**/node_modules/**", "**/android/**"],
+  "java.autobuild.enabled": false
 }

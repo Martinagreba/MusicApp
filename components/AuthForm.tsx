@@ -1,6 +1,7 @@
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
-import React, { useState } from "react";
+import React from "react";
+import { Controller } from "react-hook-form";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { fontSize } from "../constants/tokens";
 
@@ -8,6 +9,7 @@ type Field = {
   placeholder: string;
   name: string;
   secureTextEntry?: boolean;
+  rules?: object;
 };
 
 interface AuthFormProps {
@@ -16,6 +18,11 @@ interface AuthFormProps {
   buttonText: string;
   footerText?: string;
   footerLinkText?: string;
+  control: any;
+  errors: any;
+  handleSubmit: (
+    cb: (data: Record<string, string>) => Promise<void> | void,
+  ) => () => void;
   onSubmit: (data: Record<string, string>) => Promise<void>;
   onFooterPress?: () => void;
 }
@@ -26,36 +33,12 @@ export default function AuthForm({
   buttonText,
   footerText,
   footerLinkText,
+  control,
+  errors,
   onSubmit,
+  handleSubmit,
   onFooterPress,
 }: AuthFormProps) {
-  const [values, setValues] = useState<Record<string, string>>(
-    Object.fromEntries(fields.map((f) => [f.name, ""])),
-  );
-
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
-
-  const handleChange = (name: string, value: string) => {
-    setValues((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async () => {
-    setError(null);
-    setLoading(true);
-
-    try {
-      await onSubmit(values);
-    } catch (e: any) {
-      setError(e?.message || "An error occurred");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
     <View>
       <View style={styles.header}>
@@ -63,18 +46,35 @@ export default function AuthForm({
       </View>
       <View style={styles.inputcontainer}>
         {fields.map((f) => (
-          <Input
+          <Controller
             key={f.name}
-            placeholder={f.placeholder}
-            secureTextEntry={f.secureTextEntry}
-            value={values[f.name]}
-            onChangeText={(text) => handleChange(f.name, text)}
+            control={control}
+            name={f.name}
+            render={({ field: { onChange, value } }) => (
+              <View style={{ marginBottom: 10 }}>
+                <Input
+                  placeholder={f.placeholder}
+                  secureTextEntry={f.secureTextEntry}
+                  value={value}
+                  onChangeText={onChange}
+                  style={[
+                    errors[f.name]
+                      ? { borderWidth: 1, borderColor: "#ED3535" }
+                      : {},
+                  ]}
+                />
+                {errors[f.name] && (
+                  <Text style={{ color: "#9B0101", marginTop: 5 }}>
+                    {errors[f.name].message}
+                  </Text>
+                )}
+              </View>
+            )}
           />
         ))}
       </View>
-      {error && <Text style={{ color: "red", marginBottom: 10 }}>{error}</Text>}
 
-      <Button title={buttonText} onPress={handleSubmit} disabled={loading} />
+      <Button title={buttonText} onPress={handleSubmit(onSubmit)} />
       <View style={styles.footer}>
         {footerText && <Text style={styles.footerText}>{footerText}</Text>}
 

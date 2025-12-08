@@ -3,6 +3,7 @@ import { Text, View } from "react-native";
 import { vh, vw } from "react-native-css-vh-vw";
 import { ToastConfig, ToastConfigParams } from "react-native-toast-message";
 
+import HeartBroken from "@/assets/icons/heartBroken.svg";
 import HeartIcon from "@/assets/icons/heartIcon.svg";
 
 type CustomParams = {
@@ -25,9 +26,12 @@ const toastConfig: ToastConfig = {
       }}
     >
       {text1 && (
-        <Text style={{ color: "#9B0101", fontSize: 16, fontWeight: "600" }}>
-          {text1}
-        </Text>
+        <View style={{ flexDirection: "row", gap: 5 }}>
+          <Text style={{ color: "#9B0101", fontSize: 16, fontWeight: "600" }}>
+            {text1}
+          </Text>
+          <HeartBroken />
+        </View>
       )}
       {text2 && <Text style={{ color: "#9B0101", fontSize: 14 }}>{text2}</Text>}
     </View>

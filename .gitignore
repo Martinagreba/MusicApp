@@ -41,4 +41,7 @@ app-example
 
 # generated native folders
 /ios
-/android
+# Ignore Android build output
+/android/build/
+/android/app/build/
+

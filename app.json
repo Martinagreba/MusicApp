@@ -2,47 +2,19 @@
   "expo": {
     "name": "music-app",
     "slug": "music-app",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "scheme": "musicapp",
-    "userInterfaceStyle": "automatic",
-    "icon": "./assets/icons/home.png",
-    "splash": {
-      "image": "./assets/splashscreen_logo.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+    "owner": "martina_g",
+    "scheme": "music-app",
+
+    "android": {
+      "package": "com.musicapp.app"
     },
     "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "package": "com.martina.musicapp",
-      "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
-    },
-    "web": {
-      "output": "static"
-    },
-    "plugins": [
-      "expo-router",
-      "expo-web-browser",
-      [
-        "expo-build-properties",
-        {
-          "android": {
-            "compileSdkVersion": 36,
-            "targetSdkVersion": 36,
-            "minSdkVersion": 24
-          }
-        }
-      ]
-    ],
-    "experiments": {
-      "typedRoutes": true,
-      "reactCompiler": true
+      "bundleIdentifier": "com.musicapp.app",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "extra": {
-      "router": {},
       "eas": {
         "projectId": "9880e521-96d2-418a-b181-b79a5aa06d8c"
       }

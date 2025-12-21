@@ -1,6 +1,6 @@
 import axios from "axios";
 
-interface Artist {
+type Artist = {
   id: number;
   name: string;
 }

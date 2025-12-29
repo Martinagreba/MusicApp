@@ -1,6 +1,7 @@
 import { fontSize } from "@/constants/tokens";
+import { useRouter } from 'expo-router';
 import React from "react";
-import { FlatList, Image, StyleSheet, Text, View } from "react-native";
+import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 type ListProps = {
   popularTracks: any[];
@@ -8,6 +9,7 @@ type ListProps = {
 };
 
 export const List = ({ popularTracks, title }: ListProps) => {
+  const router = useRouter();
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
@@ -17,7 +19,7 @@ export const List = ({ popularTracks, title }: ListProps) => {
         data={popularTracks}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <View style={styles.trackCard}>
+          <TouchableOpacity style={styles.trackCard} onPress={() => router.push(`/track/${item.id}`)}>
             <Image
               style={styles.trackImg}
               source={{ uri: item.album.cover_medium }}
@@ -30,7 +32,7 @@ export const List = ({ popularTracks, title }: ListProps) => {
                 {item.artist.name}
               </Text>
             </View>
-          </View>
+          </TouchableOpacity>
         )}
       />
     </View>

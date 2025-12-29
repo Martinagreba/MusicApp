@@ -4,20 +4,24 @@
     "slug": "music-app",
     "owner": "martina_g",
     "scheme": "music-app",
-
     "android": {
-      "package": "com.musicapp.app"
+      "package": "com.musicapp.app",
+      "compileSdkVersion": 35,
+      "targetSdkVersion": 35
     },
-    "ios": {
-      "bundleIdentifier": "com.musicapp.app",
-      "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
-      }
-    },
-    "extra": {
-      "eas": {
-        "projectId": "9880e521-96d2-418a-b181-b79a5aa06d8c"
-      }
-    }
+    "plugins": [
+      "expo-router",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 35,
+            "targetSdkVersion": 35,
+            "buildToolsVersion": "35.0.0",
+            "kotlinVersion": "2.1.0" 
+          }
+        }
+      ]
+    ]
   }
 }

@@ -1,16 +1,19 @@
 import { LinearGradient } from "expo-linear-gradient";
-import { StyleSheet, View } from "react-native";
+import { ColorValue, StyleSheet, View } from "react-native";
 
 type Props = {
   children: React.ReactNode;
+  colors?: readonly [ColorValue, ColorValue, ...ColorValue[]];
 };
 
-export default function BackgroundGradient({ children }: Props) {
+export default function BackgroundGradient({
+  children,
+  colors = ["#121212", "#1A0A3A"],
+}: Props) {
   return (
     <View style={styles.wrapper}>
       <LinearGradient
-        pointerEvents="none"
-        colors={["#121212", "#1A0A3A"]}
+        colors={colors}
         style={StyleSheet.absoluteFill}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}

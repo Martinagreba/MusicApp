@@ -1,15 +1,22 @@
 import { fontSize } from "@/constants/tokens";
-import { useRouter } from 'expo-router';
+import { Track } from "@/store/useMusicStore";
 import React from "react";
-import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 type ListProps = {
-  popularTracks: any[];
+  popularTracks: Track[];
   title: string;
+  onTrackPress?: (trackIndex: number) => void;
 };
 
-export const List = ({ popularTracks, title }: ListProps) => {
-  const router = useRouter();
+export const List = ({ popularTracks, title, onTrackPress }: ListProps) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
@@ -18,11 +25,14 @@ export const List = ({ popularTracks, title }: ListProps) => {
         horizontal={true}
         data={popularTracks}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => (
-          <TouchableOpacity style={styles.trackCard} onPress={() => router.push(`/track/${item.id}`)}>
+        renderItem={({ item, index }) => (
+          <TouchableOpacity
+            style={styles.trackCard}
+            onPress={() => onTrackPress?.(index)}
+          >
             <Image
               style={styles.trackImg}
-              source={{ uri: item.album.cover_medium }}
+              source={{ uri: item.album.cover_xl }}
             />
             <View style={styles.musicInfo}>
               <Text style={styles.trackTitle} numberOfLines={1}>
@@ -45,7 +55,6 @@ const styles = StyleSheet.create({
 
   musicInfo: {
     flex: 1,
-    //marginLeft: 15,
     marginTop: 5,
   },
   trackCard: {

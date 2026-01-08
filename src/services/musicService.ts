@@ -3,7 +3,7 @@ import axios from "axios";
 type Artist = {
   id: number;
   name: string;
-}
+};
 const api = axios.create({
   baseURL: "https://api.deezer.com",
   timeout: 3000,
@@ -50,6 +50,20 @@ export const getChart = async () => {
     return response.data.tracks.data;
   } catch (error) {
     console.error("Failed to fetch data:", error);
+    return [];
+  }
+};
+export const searchTracks = async (query: string) => {
+  if (!query.trim()) return [];
+
+  try {
+    const response = await api.get("/search", {
+      params: { q: query },
+    });
+
+    return response.data?.data ?? [];
+  } catch (error) {
+    console.error("Search failed:", error);
     return [];
   }
 };

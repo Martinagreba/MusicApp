@@ -13,12 +13,13 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ProfileIcon from "../../../assets/icons/profileIcon.svg";
-
+import usePlayerStore from "../../store/usePlayerStore";
 const Home = () => {
   const router = useRouter();
   const { loading, genreTracks } = usePopularMusic();
+  const { setQueueAndPlay } = usePlayerStore.getState();
   return (
-    <BackgroundGradient>
+    <BackgroundGradient colors={["#121212", "#1A0A3A"]}>
       <StatusBar barStyle="light-content" />
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.header}>
@@ -39,6 +40,17 @@ const Home = () => {
                     key={genre.id}
                     title={genre.name}
                     popularTracks={genre.tracks}
+                    onTrackPress={(trackIndex) => {
+                      setQueueAndPlay(genre.tracks, trackIndex);
+
+                      router.push({
+                        pathname: "/track/[id]",
+                        params: {
+                          id: genre.tracks[trackIndex].id,
+                          mode: "play",
+                        },
+                      });
+                    }}
                   />
                 ),
             )}

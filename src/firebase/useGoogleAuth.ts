@@ -5,7 +5,6 @@ import { GoogleAuthProvider, signInWithCredential } from "firebase/auth";
 import { useEffect } from "react";
 import Toast from "react-native-toast-message";
 import { auth } from "./firebaseConfig";
-
 WebBrowser.maybeCompleteAuthSession();
 
 export const useGoogleAuth = () => {

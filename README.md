@@ -1,6 +1,58 @@
-# Welcome to your Expo app 👋
+# Welcome to Music App  👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Features
+
+- Browse popular tracks and genres  
+- Listen to track previews  
+- Search for tracks in real-time  
+- Create and manage playlists  
+- Add/remove tracks from playlists  
+- Persistent state for playlists  
+- Smooth UI with animations and responsive design
+
+  ## Screenshots
+
+> The project is still in development. Here are a few screenshots of the current progress:
+
+### Get Started Screen
+![Get Started Screen](./assets/screenshots/start.png)
+
+### Login Screen
+![Login Screen](./assets/screenshots/Login.png)
+
+### Signup Screen
+![Signup Screen](./assets/screenshots/signup.png)
+
+### Home Screen
+![Home Screen](./assets/screenshots/home.png)
+
+### Track Screen
+![Track Screen](./assets/screenshots/track.png)
+
+### Search Screen
+![Search Screen](./assets/screenshots/Search.png)
+
+### Your Library Screen
+![Your Library Screen](./assets/screenshots/library.png)
+
+### Playlist Screen
+![Playlist Screen](./assets/screenshots/Playlist.png)
+
+## Tech Stack
+
+- **React Native** & **Expo**  
+- **TypeScript**  
+- **Zustand** for state management  
+- **Axios** for API requests  
+- **Deezer API** for music data  
+- **React Hook Form** + **Zod** for form handling and validation  
+- **Expo AV** for audio playback  
+- **Expo Linear Gradient, Blur** for UI enhancements   
+- **React Native Modal**
+- **Toast Message** for user feedback  
+- **Firebase** (Authentication & Firestore) for user management and data storage
+
+  
 
 ## Get started
 
@@ -16,35 +68,8 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
-## Get a fresh project
 
-When you're ready, run:
 
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.

@@ -194,15 +194,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 16,
     marginBottom: 14,
-    borderRadius: 18,
-    backgroundColor: "rgba(78, 28, 87, 0.55)",
-    borderWidth: 1,
-    borderColor: "rgba(224,64,171,0.35)",
   },
+
   iconPlaceholder: {
     width: 54,
     height: 54,
-    borderRadius: 27,
+    borderRadius: 10,
     backgroundColor: "rgba(224,64,171,0.35)",
     justifyContent: "center",
     alignItems: "center",

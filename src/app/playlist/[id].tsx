@@ -138,8 +138,8 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 0,
     borderRadius: 0,
-    backgroundColor: "transparent",
-    borderWidth: 0,
+    borderBottomColor: "rgba(255,255,255,0.1)",
+    borderBottomWidth: 1,
   },
 
   albumCover: {
@@ -171,10 +171,8 @@ const styles = StyleSheet.create({
   },
 
   deleteButton: {
-    marginLeft: 12,
+    marginLeft: 10,
     padding: 8,
-    borderRadius: 10,
-    backgroundColor: "rgba(224,64,171,0.25)",
   },
 
   deleteButtonText: {
